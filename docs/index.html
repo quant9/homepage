@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>todo list app</title>
+	<style>
+		input[type = "button"] {
+			background-color: pink;
+		}
+	</style>
+	<script type="text/javascript">
+		function addItem(){
+			var newItem = document.createElement("div");
+ 			newItem.innerHTML = document.getElementById("textBox").value;
+ 			newItem.onclick = removeItem;
+ 			document.getElementById("list").appendChild(newItem);
+ 			saveList();
+		}
+		function removeItem(){
+			document.getElementById("list").removeChild(this);
+			// this.style = "text-decoration: line-through";
+			saveList();
+		}
+
+		function saveList(){
+			localStorage.todoList = document.getElementById("list").innerHTML;
+		}
+
+		function loadList(){
+			var list = document.getElementById("list");
+			list.innerHTML = localStorage.todoList;
+			for(var i = 0; i < list.children.length; i++){
+				list.children[i].onclick = removeItem;
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<p>Special Exhibition To-Do List</p>
+	<br/>
+	<input type="text" id="textBox" value="Type here to add task"/>
+	<br/>
+	<input type="button" value="Add item" onclick="addItem();" />
+	<br/>
+	<div id="list">
+	</div>
+	<script type="text/javascript">
+		if(localStorage.todoList){
+			loadList();
+		}
+	</script>
+	<div class="mapouter"><div class="gmap_canvas"><iframe width="702" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=19&ie=UTF8&iwloc=&output=embed" frameborder="50" scrolling="no" marginheight="0" marginwidth="0"></iframe><br><style>.mapouter{position:relative;text-align:right;height:350px;width:702px;}</style><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:702px;}</style></div></div>
+</body>
+</html>
