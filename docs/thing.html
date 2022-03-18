@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		#main-heading{
+		}
+	</style>
+</head>
+<body>
+	<h1 id="main-heading">hello</h1>
+	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+	<script type="text/javascript">
+		// var newHeadingText = "hi";
+		//  $("#main-heading").text(newHeadingText);
+		//  $("#main-heading").append("<p> hello </p>");
+		//  $("h1").fadeOut(3000).fadeIn(2000);
+		//  $("h1").slideUp(1000).slideDown(1000);
+		$("html").click(function (event) {
+			$("#main-heading").offset({
+				left: event.pageX,
+				top: event.pageY
+			});
+			$("body").append("<p class='follow'> hello </p>");
+			$(".follow").offset({
+				left: event.pageX,
+				top: event.pageY
+			});
+		});
+
+	</script>
+	<!-- <script type="text/javascript" src="hacker.js"></script>-->
+</body>
+</html>
